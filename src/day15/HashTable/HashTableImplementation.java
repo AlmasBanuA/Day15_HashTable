@@ -6,7 +6,8 @@ public class HashTableImplementation<K, V> {
 
 	/**
 	 * create method add to adding the value of the pair (K,V)key and value
-	 * @param key-key represents K
+	 * 
+	 * @param key-key     represents K
 	 * @param value-value represents V
 	 */
 	public void add(K key, V value) {
@@ -18,9 +19,10 @@ public class HashTableImplementation<K, V> {
 			myNode.setValue(value);
 		}
 	}
-	
+
 	/**
 	 * create method append to add the value in the linked list
+	 * 
 	 * @param myNode-value to append
 	 */
 	public void append(Node<K, V> myNode) {
@@ -34,11 +36,11 @@ public class HashTableImplementation<K, V> {
 		}
 	}
 
-	
 	/**
-     * Purpose: Method to searching Node in the Linked List.
-     * @return -return to the currentNode
-     */
+	 * Purpose: Method to searching Node in the Linked List.
+	 * 
+	 * @return -return to the currentNode
+	 */
 	public Node<K, V> searchNode(K data) {
 		Node<K, V> currentNode = head;
 		int position = 0;
@@ -52,7 +54,6 @@ public class HashTableImplementation<K, V> {
 		return currentNode;
 	}
 
-	// Searching for the word and get the value from the linked list
 	/**
 	 * 
 	 * @param word- Searching for the word and get the value from the linked list
@@ -68,8 +69,32 @@ public class HashTableImplementation<K, V> {
 
 	}
 
+	/**
+	 * Remove avoidable word from the phrase By using K word it will find the
+	 * particular word from the hashtable and from remove method will it
+	 * 
+	 * @param word- remove word
+	 */
+	public void remove(K word) {
+		Node currentNode = head;
+		Node previousNode = null;
+		while (currentNode != null && currentNode.getKey().equals(word)) {
+			head = currentNode.getNext();
+			return;
+		}
+		while (currentNode != null && !(currentNode.getKey().equals(word))) {
+			previousNode = currentNode;
+			currentNode = currentNode.getNext();
+		}
+		if (currentNode != null) {
+			previousNode.next = currentNode.next;
+		}
+		if (currentNode == null)
+			System.out.println("Word not found!");
+	}
+
 	/*
-	 *  Print the linked list
+	 * Print the linked list
 	 */
 	@Override
 	public String toString() {
